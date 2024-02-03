@@ -1,0 +1,40 @@
+/* forms.component.css */
+
+.student-form {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .student-form div {
+    margin-bottom: 15px;
+  }
+  
+  .student-form input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .student-form button {
+    background-color: #171817;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .student-form button:hover {
+    background-color: #6b6f6b;
+  }
+  
+  .student-form .d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .student-form .d-flex input {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
