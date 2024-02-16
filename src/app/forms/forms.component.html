@@ -1,26 +1,49 @@
-
 <form [formGroup]="myForm" class="student-form" (ngSubmit)="handleSubmit()">
     <div>
         <input type="text" formControlName="name" name="name" placeholder="Enter Your Name">
+        <ng-container *ngIf="myForm.controls.name.touched">
+            <span *ngIf="myForm.controls.name.errors?.['required']" style="color:red;">
+                Please fill the Name
+            </span>
+        </ng-container>
     </div>
 
     <div>
-        <input type="number" formControlName="phone_no"name="phonenumber" placeholder="enter your mobile number">
+        <input type="number" formControlName="phone_no" name="phonenumber" placeholder="Enter your mobile number">
     </div>
     <div>
-        <input type="email" name="email" formControlName="email"placeholder="emailId">
+        <input type="email" name="email" formControlName="email" placeholder="Email Id">
+        <ng-container *ngIf="myForm.controls.email.touched">
+            <span *ngIf="myForm.controls.email.errors?.['required']" style="color:red;">
+                Please fill the Email
+            </span>
+            <span *ngIf="myForm.controls.email.errors?.['email']" style="color:red;">
+                Invalid Email
+            </span>
+        </ng-container>
     </div>
     <div>
-        <input type="password" name="password" formControlName="password" placeholder="password">
-    </div>
+        <input type="password" name="password" formControlName="password" placeholder="Password">
+    </div>    
     <div formArrayName="Address">
-        <div class="d-flex" *ngFor="let x of getAddressFromArray().controls; index as i">
-            <input type="Address" [formControlName]="i" name="Address" placeholder="Enter your address1">
+    <div class="d-flex" *ngFor="let x of getAddressFromArray().controls; index as i">
+            <input type="text" [formControlName]="i" name="Address" >
             <button type="button" (click)="addControlToAddress()">Add</button>
             <button type="button" (click)="removeAddressAtIndex(i)">Remove</button>
-        </div>
     </div>
+    </div>
+
+
     <div>
-        <button>Submit</button>
+        <label>showPassword
+            <input type="radio" value="show" name="passwordVisibility" formControlName="PasswordVisibility">
+        
+        hide Password
+            <input type="radio" value="hide" name="passwordVisibility" formControlName="PasswordVisibility">
+        </label>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
     </div>
 </form>
